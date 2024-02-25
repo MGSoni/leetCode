@@ -1,0 +1,32 @@
+import java.util.Arrays;
+
+public class Solution {
+    public static int calculateMinPatforms(int at[], int dt[], int n) {
+
+        int max=Integer.MIN_VALUE;
+        
+        Arrays.sort(at);
+        Arrays.sort(dt);
+
+        int platform=0;
+
+        int a=0;int d=0;
+
+        while(a<n && d<n){
+            if(at[a]<=dt[d]){
+                a++;
+                platform++;
+            }else{
+                d++;
+                platform--;
+            }
+
+            if(platform>max){
+                max=platform;
+            }
+        }
+
+        return max;
+        
+    }
+}
