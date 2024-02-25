@@ -1,0 +1,39 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Solution 
+{
+	public static ArrayList<Integer> nextPermutation(ArrayList<Integer> permutation) 
+	{
+		int ind = -1;
+		int n = permutation.size();
+
+		for(int i=n-2;i>=0;i--){
+			if(permutation.get(i)<permutation.get(i+1)){
+				ind=i;
+				break;
+			}
+		}
+
+		if(ind==-1){
+			Collections.reverse(permutation);
+			return permutation;
+		}
+
+		for(int i=n-1;i>ind;i--){
+			if(permutation.get(i)>permutation.get(ind)){
+				Collections.swap(permutation, i, ind);
+				break;
+			}
+		}
+
+		List<Integer> subList = permutation.subList(ind+1,n);
+		Collections.reverse(subList);
+
+		return permutation;
+
+
+	}
+}
