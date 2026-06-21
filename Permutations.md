@@ -389,3 +389,36 @@ class Solution {
     }
 }
 ```
+SOLUTION WITHOUT EXTRA SPACE
+
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        function(nums, result, 0);
+        return result;
+    }
+
+    private void function (int[] nums, List<List<Integer>> result, int k){
+        if(k == nums.length){
+            List<Integer> list = new ArrayList<>();
+             for(int i=0;i<nums.length;i++){
+                 list.add(nums[i]);
+             }
+             result.add(list);
+             return;
+        }else{
+            int temp = 0;
+            for(int i=k; i<nums.length ; i++){
+                temp = nums[k];
+                nums[k] =nums[i];
+                nums[i] = temp;
+                function(nums, result, k+1);
+                temp = nums[k];
+                nums[k] =nums[i];
+                nums[i] = temp;
+            }
+        }
+
+        
+    }
+}
