@@ -25,11 +25,69 @@ Track three boolean arrays:
 | `diag1` | `\` diagonals under attack | `row + col` |
 | `diag2` | `/` diagonals under attack | `row - col + n` (offset to avoid negatives) |
 
-**Why `row+col` identifies `\` diagonals:** every cell on the same `\` diagonal shares the same `row+col` value.
+### Why `row+col` identifies `\` diagonals
 
-**Why `row-col` identifies `/` diagonals:** every cell on the same `/` diagonal shares the same `row-col` value.
+Write `row+col` for every cell on a 4x4 board:
 
-**Why offset by `+n` for diag2:** `row-col` ranges from `-(n-1)` to `+(n-1)` — negative indices crash. Adding `n` shifts range to `1` to `2n-1`, all positive. So array size = `2*n`.
+```
+       col=0  col=1  col=2  col=3
+row=0    0      1      2      3
+row=1    1      2      3      4
+row=2    2      3      4      5
+row=3    3      4      5      6
+```
+
+Look at the `\` diagonals — top-left to bottom-right:
+
+```
+(0,0)                       → row+col = 0
+(0,1),(1,0)                 → row+col = 1
+(0,2),(1,1),(2,0)           → row+col = 2
+(0,3),(1,2),(2,1),(3,0)     → row+col = 3
+```
+
+Every cell on the same `\` diagonal has the **same `row+col` value**. Moving one step diagonally `(row+1, col-1)` keeps the sum identical: `(row+1)+(col-1) = row+col`. So `row+col` is the unique fingerprint of every `\` diagonal.
+
+---
+
+### Why `row-col` identifies `/` diagonals
+
+Write `row-col` for every cell on a 4x4 board:
+
+```
+       col=0  col=1  col=2  col=3
+row=0    0     -1     -2     -3
+row=1    1      0     -1     -2
+row=2    2      1      0     -1
+row=3    3      2      1      0
+```
+
+Look at the `/` diagonals — bottom-left to top-right:
+
+```
+(3,0)                       → row-col = 3
+(2,0),(3,1)                 → row-col = 2
+(1,0),(2,1),(3,2)           → row-col = 1
+(0,0),(1,1),(2,2),(3,3)     → row-col = 0
+(0,1),(1,2),(2,3)           → row-col = -1
+(0,2),(1,3)                 → row-col = -2
+(0,3)                       → row-col = -3
+```
+
+Every cell on the same `/` diagonal has the **same `row-col` value**. Moving one step diagonally `(row-1, col-1)` keeps the difference identical: `(row-1)-(col-1) = row-col`. So `row-col` is the unique fingerprint of every `/` diagonal.
+
+---
+
+### Why offset by `+n` for diag2
+
+`row-col` ranges from `-(n-1)` to `+(n-1)` — negative values can't be used as array indices. Adding `n` shifts the entire range to positive:
+
+```
+original range:  -(n-1)  to  +(n-1)
+after +n shift:    1     to   2n-1
+```
+
+Maximum index = `(n-1) - 0 + n = 2n-1`. So array size = `2*n`.
 
 ---
 
