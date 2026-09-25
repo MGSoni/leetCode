@@ -1,5 +1,5 @@
 # Binary Tree Paths — Notes
-
+ 
 > **Problem:** Given a binary tree, return all root-to-leaf paths as strings in "1->2->5" format.
 > LC 257 — leetcode.com/problems/binary-tree-paths
 
