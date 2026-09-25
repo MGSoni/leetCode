@@ -1,4 +1,4 @@
-# Balanced Binary Tree — Naive vs Optimized
+# Balanced Binary Tree — Naive vs Optimized 
 
 > **Problem:** Given a binary tree, determine if it is height-balanced.
 > LC 110 — leetcode.com/problems/balanced-binary-tree
