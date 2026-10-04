@@ -1,5 +1,7 @@
 # Merge Intervals — Study Notes
 
+Revised: 4-10-2026
+
 **Pattern:** Interval Merging (shows up heavily in booking/reservation-style system design & coding rounds — e.g., Airbnb)
 
 **LeetCode:** [56 - Merge Intervals](https://leetcode.com/problems/merge-intervals/)
