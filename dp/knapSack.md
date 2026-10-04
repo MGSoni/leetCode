@@ -1,5 +1,7 @@
 # 0/1 Knapsack — Notes
 
+revised: 04/10/26
+
 > **Problem:** Given weights and values of items and a knapsack capacity, find the maximum value you can carry. Each item picked at most once.
 > Classic DP problem — no direct LeetCode link but pattern appears in LC 416, LC 474, LC 494
 
