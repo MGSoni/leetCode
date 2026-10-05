@@ -1,5 +1,7 @@
 # Validate Binary Search Tree — Notes
 
+Revised: 05-10-2026
+
 > **Problem:** Given a binary tree, determine if it is a valid BST — every left subtree node is strictly less than the current node, every right subtree node is strictly greater.
 > LC 98 — leetcode.com/problems/validate-binary-search-tree
 
