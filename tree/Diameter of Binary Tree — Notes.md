@@ -1,5 +1,5 @@
 # Diameter of Binary Tree — Notes
-
+Revised: 04-10-26
 > **Problem:** Find the length of the longest path between any two nodes in a binary tree. The path may or may not pass through the root.
 > LC 543 — leetcode.com/problems/diameter-of-binary-tree
 
