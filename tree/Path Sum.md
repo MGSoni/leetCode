@@ -1,5 +1,7 @@
 # Path Sum — Notes
 
+Revised: 05-10-26
+
 > **Problem:** Given a binary tree and a target sum, return true if there exists a root-to-leaf path where the node values sum to target.
 > LC 112 — leetcode.com/problems/path-sum
 
