@@ -1,4 +1,5 @@
 # Subsets — Notes
+Revised: 07-10-2026
 
 > **Problem:** Given an array, return all possible subsets including the empty set.
 > LC 78 — leetcode.com/problems/subsets
