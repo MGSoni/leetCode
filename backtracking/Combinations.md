@@ -1,5 +1,5 @@
 # Combinations — Notes
-
+Revised: 07-10-2026
 > **Problem:** Given `n` and `k`, find all ways to pick `k` numbers from `[1..n]` where order doesn't matter.
 > LC 77 — leetcode.com/problems/combinations
 
