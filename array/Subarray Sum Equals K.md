@@ -1,5 +1,5 @@
 # Subarray Sum Equals K
-
+Revised: 07-10-2026
 **Pattern:** Prefix Sum + HashMap
 
 ## Problem
