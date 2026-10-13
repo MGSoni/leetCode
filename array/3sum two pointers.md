@@ -1,5 +1,5 @@
 # 3Sum
-
+Revised; 13-10-26
 **Pattern:** Sorting + Two Pointers
 
 ## Problem
