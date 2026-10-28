@@ -2,6 +2,8 @@
 
 **Pattern:** Prefix Sum + HashMap (first-occurrence index)
 
+Revised: 28-10-2026
+
 ## Problem
 Given a binary array `nums` (only `0`s and `1`s), return the maximum length of a
 contiguous subarray with an equal number of `0`s and `1`s.
