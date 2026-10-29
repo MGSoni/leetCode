@@ -1,4 +1,5 @@
 # Rotten Oranges
+Revised: 29-10-2026
 
 **Pattern:** Graph Traversal — Multi-Source BFS with Level/Batch Tracking
 
