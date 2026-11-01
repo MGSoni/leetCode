@@ -1,5 +1,5 @@
 # Max Area of Island
-
+Revised: 1-11-2026
 **Pattern:** Graph Traversal — DFS (Recursive)
 
 ## Problem
