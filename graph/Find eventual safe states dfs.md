@@ -81,11 +81,24 @@ when it reaches 0 the node is safe and goes into the queue. Same technique as
 [[course-schedule-kahns-algorithm-bfs]], applied to the reversed graph.
 
 ## Complexity
-To be filled in after we discuss it. Work these out yourself first:
-- **Time:** use the stamps to explain why each node's neighbor loop runs at most once. What does
-  the total come to in terms of V (nodes) and E (edges)?
-- **Space:** what is the deepest the recursion can go? Which structures do you count: the `stamp`
-  array, the result list, the input `graph`?
+- **Time: O(V + E).** The two stamp checks at the top of `dfs` stop any node from running its
+  neighbor loop a second time, so each node's loop runs once and each edge is examined at most
+  once (at most E). The main loop and the final scan add O(V). A node that is reached again does
+  not re-enter its loop, so it is not O(V * E).
+- **Space: O(V) extra.**
+  - Recursion stack: at most one active call per node, because a node is stamped 1 when its call
+    starts and a second call into it returns on the first line. Worst case is a chain, V frames.
+    It cannot reach E.
+  - `stamp` array: O(V).
+  - Result list: up to O(V).
+  - The input `graph` is O(V + E) but was given to you, so it is not counted as extra space.
+    If an interviewer counts it, say "O(V + E) including the input".
+
+**Rule for graph complexity**
+- Time: how many times is each node processed, and each edge examined? Add them: V + E.
+- Space: list what you created. Arrays, queues and stacks with one entry per node grow with V.
+  Only an adjacency list you build yourself adds the E term. An input that is handed to you is
+  not counted.
 
 ## Solution
 
