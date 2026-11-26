@@ -1,4 +1,4 @@
-# Minimum Operations to Transform into a Mountain Array (DP with running minimum) contest
+# Minimum Operations to Transform into a Mountain Array (DP with running minimum)
 
 **Source:** LeetCode Bi-weekly Contest 196 (problem number and link not confirmed). Contest-hard medium. Not a priority for interviews, so treat it as a "revisit if time" item.
 
@@ -160,6 +160,48 @@ class Solution {
 | Unfilled row | `right[n-p]` was an unfilled row of zeros | A zero cost looks free. Only read rows that are built (1 to n-2) |
 | Syntax slips | Missing `;`, `Math.min[...]`, `INF` used before declared | Re-read the code line by line before pasting |
 | My own slip | My first reason for the bound on `v` was wrong | The corrected reason is above: flatten any part above the max to the smallest valid shape |
+
+## Worth knowing: four takeaways that carry over
+
+### 1. When each choice depends on a neighbour's choice, store the best cost per (index, value)
+
+You can't decide index 1 alone, because its choice limits index 0. Take `[5, 1]`, which must end strictly increasing:
+
+```
+If index 1 ends at 6 → index 0 may end anywhere below 6 → best is 5 (cost 0)
+If index 1 ends at 2 → index 0 must end at 1          → cost 4
+```
+
+The cheapest way to handle index 1 depends on what you picked for index 0. So keep a table: one row per index, one column per final value, each cell the cheapest total so far. Same idea as "make an array non-decreasing with minimum cost."
+
+### 2. Running minimum instead of rescanning
+
+Every cell needs "the cheapest cell strictly to my left." Keep that number while walking across:
+
+```
+row above:     4    3    2    1    0
+best so far:  INF   4    3    2    1    0
+```
+
+Rescanning for every column on a row of 2000 columns costs about 2000 x 2000 = 4 million steps. The running minimum costs 2000. Same idea as the stock problem: for each day you need the cheapest price **before** today, so you keep `minPrice` as you walk.
+
+### 3. A mirrored side is the same problem on the reversed array
+
+```
+nums:  5 1 9 8 3 4
+rev:   4 3 8 9 1 5       original index p  <->  rev index n-1-p
+```
+
+Seen again in Trapping Rain Water (tallest to my left and tallest to my right) and Product of Array Except Self (prefix pass and suffix pass). The second pass is the first pass run backwards.
+
+### 4. Trace a tiny input by hand before coding
+
+Three times a short trace caught a bug before the code ran:
+- The first idea on `[1,1,1,1,1]` gives about 1, but the real answer is 4.
+- The first Part 4 on `[2,2,3]` returned 0 instead of 2, because it read an unfilled row.
+- Tracing row 1 of `[2,2,3]` showed `v = 2` costs 1, not 0, since `best` has to be added.
+
+Use an input with an interior case (the peak, the middle, the neighbours behave differently). That is what exposes the slips.
 
 ## What I'd say in an interview
 
